@@ -51,27 +51,6 @@ contract SimpleAAv4 {
         }
     }
 
-    /*     function numAgentApprovedChange(bool b_reset) internal returns (uint256 num) {
-        for (uint256 i = 0; i < agents_record.length; i++) {
-            if(b_reset) {
-                agents_record[i].b_owner_change_approval = false;
-            } else if (agents_record[i].b_owner_change_approval) {
-                num++;
-            }
-        }
-    } */
-
-    /*     function findAgent(address _addr) internal view returns (bool success, uint256 pos_index) {
-        success = false;
-        for (uint256 i = 0; i < agents_record.length; i++) {
-            if (agents_record[i].addr == _addr) {
-                success = true;
-                pos_index = i;
-                break;
-            }
-        }
-    } */
-
     function min_agent_approval() public returns (uint256 aa) {
         aa = numAgent();
         return aa - aa / 3;

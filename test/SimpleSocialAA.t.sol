@@ -6,11 +6,12 @@ import {SimpleSocialAA} from "../src/SimpleSocialAA.sol";
 import {SimpleAAv2} from "../src/SimpleAAv2.sol";
 import {SimpleAAv3} from "../src/SimpleAAv3.sol";
 import {SimpleAAv4} from "../src/SimpleAAv4.sol";
+import {SimpleAAv5} from "../src/SimpleAAv5.sol";
 import {VmSafe} from "forge-std/Vm.sol";
 
 contract SimpleAATest is Test {
     //SimpleSocialAA public saa;
-    SimpleAAv3 saa;
+    SimpleAAv5 saa;
     VmSafe.Wallet[10] wt;
 
     function setUp() public {
@@ -21,7 +22,7 @@ contract SimpleAATest is Test {
         }
 
         //saa = new SimpleSocialAA(wt[0].addr);
-        saa = new SimpleAAv3(wt[0].addr);
+        saa = new SimpleAAv5(wt[0].addr);
         vm.deal(address(this), 10 ether);
         (bool success,) = address(saa).call{value: 1 ether}("");
         assertEq(success, true);
@@ -53,6 +54,10 @@ contract SimpleAATest is Test {
 
     function testNewAAv4() public {
         new SimpleAAv4(wt[0].addr);
+    }
+
+    function testNewAAv5() public {
+        new SimpleAAv5(wt[0].addr);
     }
 
     function testAddAgent() public {
@@ -126,37 +131,37 @@ contract SimpleAATest is Test {
         assertEq(saa.owner(), wt[9].addr);
     }
 
-    struct TestStruct {
+     struct TestStruct {
         uint256 a;
         uint256 b;
         uint256 c;
-    }
+    } 
 
-    function testStructGas1() public pure returns (bytes memory) {
+    function NtestStructGas1() public pure returns (bytes memory) {
         TestStruct memory a = TestStruct((123), 100, 200);
         return abi.encode(a.a, a.b, a.c);
     }
 
-    function testStructGas2a() public pure returns (bytes memory) {
+    function NtestStructGas2a() public pure returns (bytes memory) {
         TestStruct memory a = TestStruct((123), 100, 200);
         uint256 aa = a.a;
         return abi.encode(aa, a.b, a.c);
     }
 
-    function testStructGas2() public pure returns (bytes memory) {
+    function NtestStructGas2() public pure returns (bytes memory) {
         TestStruct memory a = TestStruct((123), 100, 200);
         uint256 c = a.c;
         return abi.encode(a.a, a.b, c);
     }
 
-    function testStructGas3() public pure returns (bytes memory) {
+    function NtestStructGas3() public pure returns (bytes memory) {
         TestStruct memory a = TestStruct((123), 100, 200);
         uint256 b = a.b;
         uint256 c = a.c;
         return abi.encode(a.a, b, c);
     }
 
-    function testStructGas4() public pure returns (bytes memory) {
+    function NtestStructGas4() public pure returns (bytes memory) {
         TestStruct memory a = TestStruct((123), 100, 200);
         uint256 a1 = a.a;
         uint256 b = a.b;
