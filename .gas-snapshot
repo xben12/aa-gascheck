@@ -1,0 +1,4 @@
+SimpleAATest:testAddAgent() (gas: 120702)
+SimpleAATest:testChangeOwner() (gas: 315379)
+SimpleAATest:testFailAddAgentNotByOwner() (gas: 9725)
+SimpleAATest:testFailChangeOwnerInsuf() (gas: 393332)
